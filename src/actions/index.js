@@ -1,65 +1,7 @@
-import { FETCH_RENTALS, FETCH_RENTAL_BY_ID_SUCCESS, FETCH_RENTAL_BY_ID_INIT } from './types';
+import { FETCH_RENTALS_SUCCESS, FETCH_RENTAL_BY_ID_SUCCESS, FETCH_RENTAL_BY_ID_INIT } from './types';
+import axios from 'axios';
 
-const rentals = [
-  {
-    id: "1",
-    title: "Central Apartment",
-    city: "New York",
-    street: "Times Square",
-    category: "apartment",
-    image: "http://via.placeholder.com/350x250",
-    bedrooms: 3,
-    guests: 12,
-    description: "Very nice apartment",
-    dailyRate: 34,
-    shared: false,
-    createdAt: "24/12/2017"
-  },
-  {
-    id: "2",
-    title: "Central Apartment 2",
-    city: "San Francisco",
-    street: "Main Street",
-    category: "condo",
-    image: "http://via.placeholder.com/350x250",
-    bedrooms: 3,
-    guests: 12,
-    description: "Very nice apartment",
-    dailyRate: 34,
-    shared: true,
-    createdAt: "24/12/2017"
-  },
-  {
-    id: "3",
-    title: "Central Apartment 3",
-    city: "Bratislavea",
-    street: "Hlavna",
-    category: "apartment",
-    image: "http://via.placeholder.com/350x250",
-    bedrooms: 3,
-    guests: 12,
-    description: "Very nice apartment",
-    dailyRate: 34,
-    shared: false,
-    createdAt: "24/12/2017"
-  },
-  {
-    id: "4",
-    title: "Central Apartment 4",
-    city: "Berlin",
-    street: "Haupt strasse",
-    category: "house",
-    image: "http://via.placeholder.com/350x250",
-    bedrooms: 3,
-    guests: 12,
-    description: "Very nice apartment",
-    dailyRate: 34,
-    shared: true,
-    createdAt: "24/12/2017"
-  }
-];
-
-const fetchRentalByIdInit = () =>{
+const fetchRentalByIdInit = () => {
   return {
     type: FETCH_RENTAL_BY_ID_INIT,
   }
@@ -72,10 +14,18 @@ const fetchRentalByIdSuccess = (rental) => {
   }
 }
 
-export const fetchRentals = () => {
+const fetchRentalsSuccess = (rentals) => {
   return {
-    type: FETCH_RENTALS,
+    type: FETCH_RENTALS_SUCCESS,
     rentals
+  }
+}
+
+export const fetchRentals = () => {
+  return (dispatch) => {
+    axios.get('/api/v1/rentals').then(res => res.data).then((rentals) => {
+      dispatch(fetchRentalsSuccess(rentals));
+    });
   }
 };
 
@@ -83,10 +33,8 @@ export const fetchRentals = () => {
 export const fetchRentalById = (rentalId) => {
   return function (dispatch) {
     dispatch(fetchRentalByIdInit());
-    //Simulate server call
-    setTimeout(() => {
-      const rental = rentals.find((rental) => rental.id === rentalId);
+    axios.get(`/api/v1/rentals/${rentalId}`).then(res => res.data).then((rental) => {
       dispatch(fetchRentalByIdSuccess(rental));
-    }, 1000);
+    });
   }
 }

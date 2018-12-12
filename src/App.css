@@ -31,6 +31,93 @@
     .navbar .dropdown-menu .dropdown-item:active {
       background-color: #61dafb; }
 
+#userBookings .card {
+  margin-bottom: 20px; }
+
+#userBookings h1 {
+  margin-bottom: 20px; }
+
+#userBookings .card-block {
+  padding: 20px; }
+
+#userBookings .card-header {
+  text-transform: capitalize; }
+
+#userBookings .card-title {
+  font-size: 18px; }
+
+#userBookings .booking-desc {
+  font-size: 14px; }
+
+#userBookings .booking-days {
+  font-size: 14px;
+  font-weight: bold; }
+
+#userBookings .booking-price-value {
+  font-weight: 700; }
+
+#userBookings .btn-bwm {
+  color: white;
+  font-size: 14px;
+  padding: 15px; }
+
+.booking {
+  padding: 20px;
+  border: 1px solid #dedada; }
+  .booking a:hover {
+    color: white; }
+  .booking .btn-confirm {
+    font-size: 17px;
+    font-weight: 700;
+    padding: 13px; }
+  .booking label {
+    font-size: 12px;
+    font-weight: 300;
+    margin-bottom: 0; }
+  .booking-price {
+    font-size: 22px;
+    font-weight: 700; }
+  .booking-per-night {
+    font-size: 13px;
+    font-weight: 300; }
+  .booking-note-title {
+    font-size: 14px;
+    margin-bottom: 10px; }
+  .booking-note-text {
+    font-size: 13px;
+    font-weight: 300; }
+  .booking .should-login-btn-container {
+    text-align: center;
+    margin-bottom: 10px; }
+    .booking .should-login-btn-container .btn-login {
+      text-align: center;
+      font-size: 15px;
+      padding: 15px; }
+      .booking .should-login-btn-container .btn-login:hover, .booking .should-login-btn-container .btn-login:focus {
+        color: white;
+        text-decoration: none; }
+
+.booking-modal .title {
+  font-weight: 700;
+  font-size: 26px; }
+
+.booking-modal .buttons {
+  margin: 15px 0px; }
+
+.booking-modal em {
+  font-style: normal;
+  font-size: 17px;
+  font-weight: 700; }
+
+.booking-modal p {
+  margin: 0; }
+
+.daterangepicker td.in-range {
+  background-color: red #61dafb; }
+
+.daterangepicker td.active {
+  background-color: #61dafb !important; }
+
 #rentalListing .title {
   font-size: 30px;
   font-weight: 700;
@@ -58,6 +145,65 @@
       font-weight: 300;
       color: #7e7e7e;
       margin-bottom: 0; }
+
+#rentalDetails .upper-section {
+  margin-bottom: 30px; }
+  #rentalDetails .upper-section img {
+    width: 100%; }
+
+#rentalDetails .details-section {
+  color: #484848; }
+  #rentalDetails .details-section .rental-type {
+    font-size: 14px;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin: 0; }
+  #rentalDetails .details-section .rental-owner {
+    float: right; }
+    #rentalDetails .details-section .rental-owner img {
+      height: 50px;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto; }
+    #rentalDetails .details-section .rental-owner span {
+      display: block;
+      font-size: 13px;
+      font-weight: 300; }
+  #rentalDetails .details-section .rental-label {
+    margin-right: 10px; }
+  #rentalDetails .details-section .rental-title {
+    margin-bottom: 5px;
+    font-size: 32px;
+    font-weight: 700; }
+  #rentalDetails .details-section .rental-city {
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 20px; }
+  #rentalDetails .details-section .rental-street {
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 20px; }
+  #rentalDetails .details-section .rental-room-info {
+    margin-bottom: 20px;
+    font-weight: 300;
+    font-size: 16px; }
+    #rentalDetails .details-section .rental-room-info .rental-bedrooms {
+      margin-right: 0; }
+    #rentalDetails .details-section .rental-room-info span {
+      margin-right: 10px; }
+    #rentalDetails .details-section .rental-room-info i {
+      margin-right: 2px; }
+  #rentalDetails .details-section .rental-description {
+    font-weight: 300;
+    margin-bottom: 30px; }
+  #rentalDetails .details-section .rental-assets .title {
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 22px; }
+  #rentalDetails .details-section .rental-assets span {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: 300; }
 
 .clickable:hover {
   cursor: pointer; }

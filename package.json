@@ -2,10 +2,13 @@
   "name": "bwm-react-cli",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
+    "axios": "^0.18.0",
     "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.0.0",
+    "bootstrap-daterangepicker": "^3.0.3",
     "express": "^4.16.4",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
@@ -18,12 +21,16 @@
     "path": "^0.12.7",
     "popper.js": "^1.14.3",
     "react": "^16.6.3",
+    "react-bootstrap-daterangepicker": "^4.1.0",
     "react-dom": "^16.6.3",
     "react-redux": "^5.0.7",
+    "react-responsive-modal": "^3.5.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "2.1.1",
+    "react-toastify": "^4.4.3",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "titleize": "^1.0.1"
   },
   "scripts": {
     "build-css": "node-sass-chokidar ./src -o ./src",
