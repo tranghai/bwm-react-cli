@@ -69,9 +69,11 @@ exports.register =  function(req, res) {
 }
 
 exports.authMiddleware = function(req, res, next) {
+  // Lấy token từ header
   const token = req.headers.authorization;
 
   if (token) {
+    // get user từ việc giải mã token
     const user = parseToken(token);
 
     User.findById(user.userId, function(err, user) {
@@ -91,6 +93,7 @@ exports.authMiddleware = function(req, res, next) {
   }
 }
 
+// Dùng để giải mã đoạn token.
 function parseToken(token) {
   return jwt.verify(token.split(' ')[1], config.SECRET);
 }
