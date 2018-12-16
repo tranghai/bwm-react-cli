@@ -1,27 +1,28 @@
 import React from 'react';
 import LoginForm from './LoginForm';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import * as actions from '../../actions';
-export default class Login extends React.Component {
+
+class Login extends React.Component {
 
     constructor() {
         super();
-
-        this.state = {
-            errors: []
-        }
         this.loginUser = this.loginUser.bind(this);
     }
 
     loginUser(userData) {
-        actions.login(userData).then(
-            res => console.log(res),
-            errors => this.setState({ errors })
-        );
+        this.props.dispatch(actions.login(userData));
     }
 
     render() {
+
+        const { isAuth, errors } = this.props.auth;
         const { successRegister } = this.props.location.state || false;
-        const { errors } = this.state;
+
+        if (isAuth) {
+            return <Redirect to={{ pathname: '/rentals' }} />
+        }
 
         return (
             <section id="login">
@@ -49,3 +50,11 @@ export default class Login extends React.Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        auth: state.auth
+    }
+}
+
+export default connect(mapStateToProps)(Login)

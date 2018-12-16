@@ -1,4 +1,7 @@
-import { FETCH_RENTALS_SUCCESS, FETCH_RENTAL_BY_ID_SUCCESS, FETCH_RENTAL_BY_ID_INIT } from './types';
+import { FETCH_RENTALS_SUCCESS, FETCH_RENTAL_BY_ID_SUCCESS, FETCH_RENTAL_BY_ID_INIT,
+          LOGIN_FAILURE, LOGIN_SUCCESS, LOGOUT } from './types';
+import authService from '../services/auth-service';
+
 import axios from 'axios';
 
 // RENTAL ACTIONS -----------------------------------------------------------------
@@ -48,8 +51,44 @@ export const register = (userData) => {
     err => Promise.reject(err.response.data.errors))
 }
 
-export const login = (userData) =>{
-  return axios.post('/api/v1/users/auth', {...userData}).then(
-    res => res.data,
-    err => Promise.reject(err.response.data.errors))
+const loginSuccess = () => {
+  return {
+    type: LOGIN_SUCCESS,
+  }
+}
+
+const loginFailure = (errors) =>{
+  return {
+    type: LOGIN_FAILURE,
+    errors
+  }
+}
+
+export const checkAuthState = () =>{
+  return dispatch =>{
+    if(authService.isAuthenticated()){
+      dispatch(loginSuccess());
+    }
+  }
+}
+
+export const login = (userData) => {
+  return dispatch => {
+    return axios.post('/api/v1/users/auth', userData)
+      .then(res => res.data)
+      .then(token => {
+        authService.saveToken(token);
+        dispatch(loginSuccess());
+      })
+      .catch(({response}) => {
+        dispatch(loginFailure(response.data.errors));
+      })
+  }
+}
+
+export const logout = () =>{
+    authService.invalidateUser();
+    return {
+      type: LOGOUT
+    }
 }
